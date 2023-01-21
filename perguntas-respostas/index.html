@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Perguntas & Respostas</title>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Qual o seu lanche favorito?</h1>
+    </div>
+
+    <form class="pergunta">
+        <div class="respsota">
+            <span>Refrigerante</span>
+            <input type="radio" name="pergunta1" value="correta" />
+            <br />
+        </div>
+        <div class="respsota">
+            <span>Suco</span>
+            <input type="radio" name="pergunta1" value="incorreta"/>
+            <br />
+        </div>
+            <div class="respsota">
+            <span>Água</span>
+            <input type="radio" name="pergunta1" value="incorreta"/>
+            <br />
+        </div>
+    </form>
+
+    <div class="title">
+        <h1>Qual a sua bebida favorita?</h1>
+    </div>
+
+    <form class="pergunta">
+        <div class="respsota">
+            <span>Refrigerante</span>
+            <input type="radio" name="pergunta1" value="correta" />
+            <br />
+        </div>
+        <div class="respsota">
+            <span>Suco</span>
+            <input type="radio" name="pergunta1" value="incorreta"/>
+            <br />
+        </div>
+            <div class="respsota">
+            <span>Água</span>
+            <input type="radio" name="pergunta1" value="incorreta"/>
+            <br />
+        </div>
+    </form>
+
+
+    <script>
+        //1) colocar o span e o input type radio dentro de uma div para preencher toda a linha
+        //2) recuperar o elemento pai da opção correta ou incorreta e aplicar a devida cor
+        //3) depois de selecionado a resposta deixar o botão desabilitado
+
+
+
+
+
+        var elementos = document.querySelectorAll('[type=radio]');
+
+        for (var i = 0; i < elementos.length; i++) {
+            elementos[i].addEventListener('change', function (e) {
+                let marcado = e.target.value;
+                if (marcado == "correta") {
+                    
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = "green";
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+
+                } else if (marcado == "incorreta") {
+                    
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = "red";
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+
+                    let correta = parentNode.parentNode.querySelector('[value=correta]');
+                    correta.parentNode.style.backgroundColor = 'green';
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
